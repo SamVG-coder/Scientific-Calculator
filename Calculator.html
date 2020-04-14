@@ -1,0 +1,234 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <style>
+        div{
+            width: 320px;
+            height: 570px;
+            background-color: rgb(29, 34, 37);
+            border-radius: 5%;
+                
+
+        }
+	button {
+    		height: 50;
+    		width: 50;
+	}
+	
+	.inp {
+    		width:  100%;
+    		height: 55px;    
+    		text-align: right;
+            font-size: larger;
+            border: 2px;
+	}
+
+	.hidden{
+    		visibility: visible;
+	}
+    td{
+        padding: 5px;
+    }
+
+    </style>
+</head>
+<body style="margin: 10%; text-align: center;">
+    <div>
+
+        <table align="center" >
+            <tr>
+                <td colspan="5" id='col1'><input type="text" class=" btn btn-light inp " id="result" value=0 ></td>
+            </tr>
+
+
+            <tr class="hidden" id='1' >
+                <br>
+                <br>
+                <td><br><button  class="btn btn-secondary" onclick="log()">log</button ></td>
+                <td><br><button   class="btn btn-secondary" onclick="ln()">ln</button ></td>
+                <td><br><button  class="btn btn-secondary"  onclick="sin()">sin</button ></td>
+                <td><br><button   class="btn btn-secondary" onclick="cos()">cos</button ></td>
+                <td><br><button   class="btn btn-secondary" onclick="tan()">tan</button ></td>
+                 
+            </tr>
+             <tr  id='2' >
+                <td><button   class="btn btn-secondary" onclick="display('(')">(</button ></td>
+                <td><button   class="btn btn-secondary" onclick="display(')')">)</button ></td>
+                <td><button   class="btn btn-secondary" onclick="sqrt()">&radic;</button ></td>
+                <td><button   class="btn btn-secondary" onclick="square()">x<sup>2</sup></button ></td>
+                <td><button   class="btn btn-secondary" onclick="cube()">x<sup>3</sup></button ></td>
+            </tr>
+            <tr>
+                <td id=6><button  class="btn btn-secondary"  onclick="exp()">e</button ></td>
+                <td id=5><button   class="btn btn-secondary" onclick="pi()">&pi;</button ></td>
+                <td><button   class="btn btn-secondary" onclick="display('%')">%</button ></td>
+                <td   id=4><button  class="btn btn-secondary" onclick="factorial()">x!</button ></td>
+                <td   id=3><button   class="btn btn-secondary" onclick="inverse()">x<sup>-1</sup></button ></td>
+    
+            </tr>
+            <tr>
+                <td><button  class="btn btn-light"onclick="display('7')">7</button ></td>
+                <td><button  class="btn btn-light" onclick="display('8')">8</button ></td>
+                <td><button  class="btn btn-light"onclick="display('9')">9</button ></td>
+                <td><button  class="btn btn-primary" onclick="display('*')">&times;</button ></td>
+                <td><button  class="btn btn-primary" onclick="display('/')">/</button ></td>
+            </tr>
+            <tr>
+                <td><button  class="btn btn-light"onclick="display('4')">4</button ></td>
+                <td><button  class="btn btn-light"onclick="display('5')">5</button ></td>
+                <td><button  class="btn btn-light"onclick="display('6')">6</button ></td>
+                <td><button  class="btn btn-primary" onclick="display('+')">+</button ></td>
+                <td><button  class="btn btn-primary" onclick="display('-')">&minus;</button ></td>
+    
+            </tr>
+            <tr>
+                <td><button  class="btn btn-light"onclick="display('1')">1</button ></td>
+                <td><button  class="btn btn-light"onclick="display('2')">2</button ></td>
+                <td><button  class="btn btn-light"onclick="display('3')">3</button ></td>
+                <td><button  class="btn btn-danger" onclick="backspace()"><svg class="bi bi-backspace" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M6.603 2h7.08a1 1 0 011 1v10a1 1 0 01-1 1h-7.08a1 1 0 01-.76-.35L1 8l4.844-5.65A1 1 0 016.603 2zm7.08-1a2 2 0 012 2v10a2 2 0 01-2 2h-7.08a2 2 0 01-1.519-.698L.241 8.65a1 1 0 010-1.302L5.084 1.7A2 2 0 016.603 1h7.08z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M5.83 5.146a.5.5 0 000 .708l5 5a.5.5 0 00.707-.708l-5-5a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M11.537 5.146a.5.5 0 010 .708l-5 5a.5.5 0 01-.708-.708l5-5a.5.5 0 01.707 0z" clip-rule="evenodd"/>
+                  </svg></button ></td>
+                <td><button  class="btn btn-danger" onclick="clr()">AC</button ></td>
+            </tr>
+            <tr>
+                <td><button class="btn btn-light" onclick="display('00')">00</button ><br></td>
+                <td><button  class="btn btn-light"onclick="display('0')">0</button ><br></td>
+                <td><button class="btn btn-light" onclick="display('.')"><b>.</b></button ><br></td>
+                <td><button  class="btn btn-success" onclick="solve()">=</button ><br></td>
+                <td  id="7" ><button class="btn btn-success"  onclick="answer()">Ans</button ><br></td>
+            </tr>
+            
+        </table> 
+    </div>
+</body>
+<script language="javascript">
+let ans=0;
+function solve(){
+    let x = document.getElementById('result').value;
+    ans = eval(x);
+    document.getElementById('result').value = ans;    
+}
+
+function display(val){
+    if(document.getElementById('result').value.localeCompare("undefined")==0)
+        document.getElementById('result').value = val;
+    else
+        document.getElementById('result').value+=val;
+}
+
+function clr(){
+    document.getElementById('result').value = "0";
+}
+
+function backspace(){
+    var value = document.getElementById("result").value;
+    document.getElementById("result").value = value.substr(0, value.length - 1);
+}
+
+function show(){
+    for(x=1;x<=7;x++){
+        if(document.getElementById(x).style.visibility === 'collapse'){
+            document.getElementById(x).style.visibility = 'visible';
+            document.getElementById('col1').colSpan = 5;
+        }
+        else{
+            document.getElementById(x).style.visibility = 'collapse';
+            document.getElementById('col1').colSpan = 4;
+        }
+    }
+}
+
+function square(){
+    ans = Math.pow(document.getElementById('result').value,2);
+    document.getElementById('result').value = ans;
+}
+function cube(){
+    ans = Math.pow(document.getElementById('result').value,3);
+    document.getElementById('result').value = ans;
+}
+
+function inverse(){
+    ans = 1/document.getElementById('result').value;
+    document.getElementById('result').value = ans;
+}
+
+function factorial(){
+    let x = document.getElementById('result').value;
+    if(x==0 || x==1)
+        document.getElementById('result').value = 1;
+    else {
+        let fact = 1;
+        for(i=2;i<=x;i++){
+            fact= fact *i;
+        }
+	ans = fact;
+        document.getElementById('result').value= fact;
+    }
+}
+
+function pi(){
+    if(document.getElementById('result').value == 0)
+        document.getElementById('result').value = Math.PI;
+    else
+        document.getElementById('result').value = document.getElementById('result').value * Math.PI;
+        
+}
+
+function sqrt(){
+    ans = Math.sqrt(document.getElementById('result').value);
+    document.getElementById('result').value = ans;
+}
+
+function exp(){
+    if(document.getElementById('result').value == 0)
+        document.getElementById('result').value = Math.E;
+    else
+        document.getElementById('result').value = document.getElementById('result').value * Math.E;
+        
+}
+
+function power(){
+    ans = document.getElementById('result').value;
+    let x = ans;
+}
+
+function log(){
+    ans = Math.log10(document.getElementById('result').value);
+    document.getElementById('result').value = ans;
+}
+
+function ln(){
+    ans = Math.log(document.getElementById('result').value);
+    document.getElementById('result').value = ans;
+}
+
+function sin(){
+    ans = Math.sin(document.getElementById('result').value);
+
+    document.getElementById('result').value = ans; 
+}
+
+function cos(){
+    ans = Math.cos(document.getElementById('result').value);
+    document.getElementById('result').value = ans;
+}
+
+function tan(){
+    ans = Math.tan(document.getElementById('result').value);
+    document.getElementById('result').value = ans;
+}
+
+function answer(){
+    document.getElementById('result').value += ans;
+}
+</script>
+</html>
